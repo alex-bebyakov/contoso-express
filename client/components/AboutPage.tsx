@@ -3,7 +3,16 @@ import {connect} from 'react-redux';
 import StudentStatisticsList from './student/StudentStatisticsList';
 import {loadStudentsStatistics} from '../actions/studentActions';
 
-class AboutPage extends React.Component<any, any> {
+interface State {
+    statistics: any[]
+}
+
+interface Props {
+    loadStudentsStatistics(): void;
+    statistics: any[] 
+}
+
+class AboutPage extends React.Component<Props, State> {
     constructor(props, context) {
         super(props, context);
 
