@@ -12,7 +12,7 @@ let cssLoaderStr = isProduction ? 'css?minimize' : 'css';
 
 module.exports = {
     entry: {
-        app: "./client/AppMain.tsx"
+        app: "./client/AppMain.ts"
     },
     output: {
         path: "./build/client",
@@ -23,6 +23,7 @@ module.exports = {
     },
     module: {
         loaders: [
+            {test: /\.vue$/, loader: 'vue', exclude: /node_modules/},
             {test: /\.tsx?$/, loader: "awesome-typescript-loader?tsconfig=tsconfig.webpack.json"},
             {test: /\.css$/, loader: ExtractTextPlugin.extract(cssLoaderStr)},
             {test: /\.less$/, loader: ExtractTextPlugin.extract(cssLoaderStr + '!less')},
