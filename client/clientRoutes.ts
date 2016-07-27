@@ -2,13 +2,13 @@ export function configRouter (router) {
 
     // normal routes
     router.map({
-        '/entities': {
-            name: 'entities',
-            component: require('./components/entities.vue')
+        '/': {
+            name: 'home',
+            component: require('./components/home.vue')
         },
-        '/other': {
-            name: 'other',
-            component: require('./components/other.vue')
+        '/about': {
+            name: 'about',
+            component: require('./components/about.vue')
         }
     });
 }

@@ -1,17 +1,16 @@
 import {
-    GET_ENTITIES
+    LOAD_STUDENTS_STATISTICS
 } from '../mutationTypes';
 
 // initial state
 const state = {
-    list: [],
-    entity: {}
+    statisticsList: []
 };
 
 // mutations
 const mutations = {
-    [GET_ENTITIES] (state, entities) {
-        state.list = entities;
+    [LOAD_STUDENTS_STATISTICS] (state, statistics) {
+        state.statisticsList = statistics;
     }
 };
 

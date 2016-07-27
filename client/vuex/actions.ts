@@ -1,9 +1,15 @@
 import helper from '../helpers/uiHelper';
 import * as types from './mutationTypes';
 import * as _ from 'lodash';
+import studentService from '../services/studentService';
 
-export const getEntities = (store) => {
+export const loadStudentsStatistics = (store) => {
     const {dispatch, state} = store;
 
-    dispatch(types.GET_ENTITIES, []);
+    return studentService.getStudentsStatistics()
+        .then(statistics => {
+            dispatch(types.LOAD_STUDENTS_STATISTICS, statistics);
+        }).catch(error => {
+            throw(error);
+        });
 };

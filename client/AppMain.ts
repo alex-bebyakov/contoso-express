@@ -29,7 +29,7 @@ const App = Vue.extend({
 });
 
 (router as any).start(App, '#app div', () => {
-    router.go({name: 'entities'});
+    router.go({name: 'home'});
 });
 
 // just for debugging
