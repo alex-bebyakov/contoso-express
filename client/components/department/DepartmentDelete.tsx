@@ -6,7 +6,20 @@ import helper from '../../helpers/uiHelper';
 import * as _ from 'lodash';
 import * as departmentActions from '../../actions/departmentActions';
 
-class DepartmentDelete extends React.Component<any, any> {
+interface State {
+    department: any,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    department: any,
+    actions: any,
+    visible: boolean,
+    close(): void
+}
+
+class DepartmentDelete extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 

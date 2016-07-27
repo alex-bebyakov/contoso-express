@@ -8,7 +8,24 @@ import * as courseActions from '../../actions/courseActions';
 import {departmentSelectListItem} from '../../formatters/entityFromatter';
 import CourseForm from './CourseForm';
 
-class CourseSave extends React.Component<any, any> {
+interface State {
+    course: any,
+    errors: any,
+    saving: boolean,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    course: any,
+    departments: any[],
+    saving: boolean,
+    visible: boolean,
+    close(): void,
+    actions: any
+}
+
+class CourseSave extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 
@@ -25,7 +42,7 @@ class CourseSave extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({course: _.assign({}, nextProps.course)});
+        this.setState({course: _.assign({}, nextProps.course)} as State);
     }
 
     updateCourseState(event) {
@@ -34,7 +51,7 @@ class CourseSave extends React.Component<any, any> {
         const field = event.target.name;
         course[field] = event.target.value;
 
-        return this.setState({course: course});
+        return this.setState({course: course} as State);
     }
 
     courseFormIsValid() {
@@ -66,7 +83,7 @@ class CourseSave extends React.Component<any, any> {
             formIsValid = false;
         }
 
-        this.setState({errors: errors});
+        this.setState({errors: errors} as State);
         return formIsValid;
     }
     
@@ -77,7 +94,7 @@ class CourseSave extends React.Component<any, any> {
             return;
         }
 
-        this.setState({saving: true});
+        this.setState({saving: true} as State);
 
         this.props.actions.saveCourse(this.state.course)
             .then(() => {
@@ -87,7 +104,7 @@ class CourseSave extends React.Component<any, any> {
                 helper.showMessage(message);
             })
             .catch(err => {
-                this.setState({saving: false});
+                this.setState({saving: false} as State);
             });
     }
 

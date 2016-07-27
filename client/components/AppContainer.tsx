@@ -4,7 +4,15 @@ import {connect} from 'react-redux';
 import Navigation from './Navigation';
 import dateFormatter from '../formatters/dateFormatter';
 
-class App extends React.Component<any, any> {
+interface State {
+
+}
+
+interface Props {
+    children: any[]
+}
+
+class App extends React.Component<Props, State> {
     render() {
         let date = dateFormatter.currentYear();
 
@@ -30,11 +38,8 @@ class App extends React.Component<any, any> {
 
 }
 
-
 function mapStateToProps(state, ownProps) {
-    return {
-
-    };
+    return {};
 }
 
 export default connect(mapStateToProps)(App);

@@ -10,7 +10,26 @@ import StudentDetails from './student/StudentDetails';
 import StudentDelete from './student/StudentDelete';
 import StudentSearch from './student/StudentSearch';
 
-class StudentsPage extends React.Component<any, any> {
+interface State {
+    students: any[],
+    search: string,
+    sortOrder: string,
+    saveModalVisible: boolean,
+    detailsModalVisible: boolean,
+    confirmationVisible: boolean,
+    activePage: number,
+    totalCount: number,
+    pageSize: number
+}
+
+interface Props {
+    students: any[],
+    totalCount: number,
+    actions: any,
+    loadStudents(): void
+}
+
+class StudentsPage extends React.Component<Props, State> {
     constructor(props, context) {
         super(props, context);
 
@@ -44,7 +63,7 @@ class StudentsPage extends React.Component<any, any> {
     }
 
     changeSearchState(event) {
-        return this.setState({search: event.target.value});
+        return this.setState({search: event.target.value} as State);
     }
 
     searchStudents() {
@@ -60,40 +79,38 @@ class StudentsPage extends React.Component<any, any> {
     showSaveModal(studentId) {
         this.props.actions.loadStudent(studentId)
             .then(() => {
-                this.setState({saveModalVisible: true});
+                this.setState({saveModalVisible: true} as State);
             });
     }
 
     closeSaveModal() {
-        this.setState({saveModalVisible: false});
+        this.setState({saveModalVisible: false} as State);
     }
 
     showDetailsModal(studentId) {
         this.props.actions.loadStudent(studentId)
             .then(() => {
-                this.setState({detailsModalVisible: true});
+                this.setState({detailsModalVisible: true} as State);
             });
     }
 
     closeDetailsModal() {
-        this.setState({detailsModalVisible: false});
+        this.setState({detailsModalVisible: false} as State);
     }
 
     showConfirmationModal(studentId) {
         this.props.actions.loadStudent(studentId)
             .then(() => {
-                this.setState({confirmationVisible: true});
+                this.setState({confirmationVisible: true} as State);
             });
     }
 
     closeConfirmationModal() {
-        this.setState({confirmationVisible: false});
+        this.setState({confirmationVisible: false} as State);
     }
 
     pageSelection(eventKey) {
-        this.setState({
-            activePage: eventKey
-        });
+        this.setState({activePage: eventKey} as State);
 
         this.props.actions.loadStudents(this.state.search, this.state.sortOrder, eventKey, this.state.pageSize);
     }
@@ -111,7 +128,7 @@ class StudentsPage extends React.Component<any, any> {
                 break;
         }
 
-        this.setState({sortOrder: newSortOrder});
+        this.setState({sortOrder: newSortOrder} as State);
 
         this.props.actions.loadStudents(this.state.search, newSortOrder, this.state.activePage, this.state.pageSize);
     }

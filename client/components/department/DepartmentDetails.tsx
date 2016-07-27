@@ -6,7 +6,19 @@ import DisplayRow from '../common/DisplayRow';
 import dateFormatter from '../../formatters/dateFormatter';
 import currencyFormatter from '../../formatters/currencyFormatter';
 
-class DepartmentDetails extends React.Component<any, any> {
+interface State {
+    department: any,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    department: any,
+    visible: boolean,
+    close(): void
+}
+
+class DepartmentDetails extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 

@@ -5,7 +5,20 @@ import * as _ from 'lodash';
 import * as instructorActions from '../../actions/instructorActions';
 import InstructorCourseRow from './InstructorCourseRow';
 
-class InstructorCoursesList extends React.Component<any, any> {
+interface State {
+    instructor: any,
+    visible: boolean
+}
+
+interface Props {
+    instructor: any,
+    actions: any,
+    visible: boolean,
+    selectedCourseId: number,
+    onSelectClick: any
+}
+
+class InstructorCoursesList extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 

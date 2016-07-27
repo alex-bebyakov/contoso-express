@@ -4,7 +4,19 @@ import {Modal, Button} from 'react-bootstrap';
 import * as _ from 'lodash';
 import DisplayRow from '../common/DisplayRow';
 
-class CourseDetails extends React.Component<any, any> {
+interface State {
+    course: any,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    course: any,
+    visible: boolean,
+    close(): void
+}
+
+class CourseDetails extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 

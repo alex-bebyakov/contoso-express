@@ -7,7 +7,19 @@ import DepartmentDetails from './department/DepartmentDetails';
 import DepartmentDelete from './department/DepartmentDelete';
 import * as departmentActions from '../actions/departmentActions';
 
-class DepartmentsPage extends React.Component<any, any> {
+interface State {
+    departments: any[],
+    saveModalVisible: boolean,
+    detailsModalVisible: boolean,
+    confirmationVisible: boolean
+}
+
+interface Props {
+    departments: any[],
+    actions: any
+}
+
+class DepartmentsPage extends React.Component<Props, State> {
     constructor(props, context) {
         super(props, context);
 
@@ -29,34 +41,34 @@ class DepartmentsPage extends React.Component<any, any> {
     showSaveModal(departmentId) {
         this.props.actions.loadDepartment(departmentId)
             .then(() => {
-                this.setState({saveModalVisible: true});
+                this.setState({saveModalVisible: true} as State);
             });
     }
 
     closeSaveModal() {
-        this.setState({saveModalVisible: false});
+        this.setState({saveModalVisible: false} as State);
     }
 
     showDetailsModal(departmentId) {
         this.props.actions.loadDepartment(departmentId)
             .then(() => {
-                this.setState({detailsModalVisible: true});
+                this.setState({detailsModalVisible: true} as State);
             });
     }
 
     closeDetailsModal() {
-        this.setState({detailsModalVisible: false});
+        this.setState({detailsModalVisible: false} as State);
     }
 
     showConfirmationModal(departmentId) {
         this.props.actions.loadDepartment(departmentId)
             .then(() => {
-                this.setState({confirmationVisible: true});
+                this.setState({confirmationVisible: true} as State);
             });
     }
 
     closeConfirmationModal() {
-        this.setState({confirmationVisible: false});
+        this.setState({confirmationVisible: false} as State);
     }
 
     render() {

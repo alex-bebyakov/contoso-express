@@ -9,7 +9,25 @@ import {loadCourses} from '../../actions/courseActions';
 import InstructorForm from './InstructorForm';
 import {courseSelectListItem} from '../../formatters/entityFromatter';
 
-class InstructorSave extends React.Component<any, any> {
+interface State {
+    instructor: any,
+    errors: any,
+    saving: boolean,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    instructor: any,
+    courses: any[],
+    saving: boolean,
+    visible: boolean,
+    close(): void,
+    actions: any,
+    loadCourses(): void
+}
+
+class InstructorSave extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 
@@ -26,7 +44,7 @@ class InstructorSave extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({instructor: _.assign({}, nextProps.instructor)});
+        this.setState({instructor: _.assign({}, nextProps.instructor)} as State);
     }
 
     componentWillMount() {
@@ -66,7 +84,7 @@ class InstructorSave extends React.Component<any, any> {
             }
         }
 
-        return this.setState({instructor: instructor});
+        return this.setState({instructor: instructor} as State);
     }
 
     instructorFormIsValid() {
@@ -88,7 +106,7 @@ class InstructorSave extends React.Component<any, any> {
             formIsValid = false;
         }
 
-        this.setState({errors: errors});
+        this.setState({errors: errors} as State);
         return formIsValid;
     }
     
@@ -99,7 +117,7 @@ class InstructorSave extends React.Component<any, any> {
             return;
         }
 
-        this.setState({saving: true});
+        this.setState({saving: true} as State);
         
         this.props.actions.saveInstructor(this.state.instructor)
             .then(() => {
@@ -109,7 +127,7 @@ class InstructorSave extends React.Component<any, any> {
                 helper.showMessage(message);
             })
             .catch(err => {
-                this.setState({saving: false});
+                this.setState({saving: false} as State);
             });
     }
 

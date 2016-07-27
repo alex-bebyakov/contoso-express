@@ -6,7 +6,20 @@ import helper from '../../helpers/uiHelper';
 import * as _ from 'lodash';
 import * as studentActions from '../../actions/studentActions';
 
-class StudentDelete extends React.Component<any, any> {
+interface State {
+    student: any,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    student: any,
+    visible: boolean,
+    close(): void,
+    actions: any
+}
+
+class StudentDelete extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 

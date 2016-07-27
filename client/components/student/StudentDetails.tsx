@@ -6,7 +6,19 @@ import dateFormatter from '../../formatters/dateFormatter';
 import StudentEnrollmentsList from './StudentEnrollmentsList';
 import DisplayRow from '../common/DisplayRow';
 
-class StudentDetails extends React.Component<any, any> {
+interface State {
+    student: any,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    student: any,
+    visible: boolean,
+    close(): void
+}
+
+class StudentDetails extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 

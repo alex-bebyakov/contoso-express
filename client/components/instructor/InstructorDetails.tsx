@@ -5,7 +5,19 @@ import * as _ from 'lodash';
 import DisplayRow from '../common/DisplayRow';
 import dateFormatter from '../../formatters/dateFormatter';
 
-class InstructorDetails extends React.Component<any, any> {
+interface State {
+    instructor: any,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    instructor: any,
+    visible: boolean,
+    close(): void
+}
+
+class InstructorDetails extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 

@@ -7,7 +7,23 @@ import helper from '../../helpers/uiHelper';
 import * as studentActions from '../../actions/studentActions';
 import StudentForm from './StudentForm';
 
-class StudentSave extends React.Component<any, any> {
+interface State {
+    student: any,
+    errors: any,
+    saving: boolean,
+    visible: boolean,
+    close(): void
+}
+
+interface Props {
+    student: any,
+    saving: boolean,
+    visible: boolean,
+    close(): void,
+    actions: any
+}
+
+class StudentSave extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 
@@ -24,7 +40,7 @@ class StudentSave extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({student: _.assign({}, nextProps.student)});
+        this.setState({student: _.assign({}, nextProps.student)} as State);
     }
 
     updateStudentState(event) {
@@ -38,7 +54,7 @@ class StudentSave extends React.Component<any, any> {
             student[field] = event.target.value;
         }
 
-        return this.setState({student: student});
+        return this.setState({student: student} as State);
     }
 
     studentFormIsValid() {
@@ -61,7 +77,7 @@ class StudentSave extends React.Component<any, any> {
             formIsValid = false;
         }
 
-        this.setState({errors: errors});
+        this.setState({errors: errors} as State);
         return formIsValid;
     }
     
@@ -72,7 +88,7 @@ class StudentSave extends React.Component<any, any> {
             return;
         }
 
-        this.setState({saving: true});
+        this.setState({saving: true} as State);
 
         this.props.actions.saveStudent(this.state.student)
             .then(() => {
@@ -82,7 +98,7 @@ class StudentSave extends React.Component<any, any> {
                 helper.showMessage(message);
             })
             .catch(err => {
-                this.setState({saving: false});
+                this.setState({saving: false} as State);
             });
     }
 

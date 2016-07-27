@@ -9,7 +9,22 @@ import CourseDetails from './courses/CourseDetails';
 import CourseDelete from './courses/CourseDelete';
 import CoursesFilter from './courses/CoursesFilter';
 
-class CoursesPage extends React.Component<any, any> {
+interface State {
+    courses: any[],
+    selectedDepartmentId: string,
+    saveModalVisible: boolean,
+    detailsModalVisible: boolean,
+    confirmationVisible: boolean
+}
+
+interface Props {
+    courses: any[],
+    departments: any[],
+    actions: any,
+    loadCourses(): void
+}
+
+class CoursesPage extends React.Component<Props, State> {
     constructor(props, context) {
         super(props, context);
 
@@ -38,7 +53,7 @@ class CoursesPage extends React.Component<any, any> {
     changeDepartmentState(event) {
         let departmentId = event.target.value;
         
-        return this.setState({selectedDepartmentId: departmentId});
+        return this.setState({selectedDepartmentId: departmentId} as State);
     }
 
     filterCourses() {
@@ -48,34 +63,34 @@ class CoursesPage extends React.Component<any, any> {
     showSaveModal(courseId) {
         this.props.actions.loadCourse(courseId)
             .then(() => {
-                this.setState({saveModalVisible: true});
+                this.setState({saveModalVisible: true} as State);
             });
     }
 
     closeSaveModal() {
-        this.setState({saveModalVisible: false});
+        this.setState({saveModalVisible: false} as State);
     }
 
     showDetailsModal(courseId) {
         this.props.actions.loadCourse(courseId)
             .then(() => {
-                this.setState({detailsModalVisible: true});
+                this.setState({detailsModalVisible: true} as State);
             });
     }
 
     closeDetailsModal() {
-        this.setState({detailsModalVisible: false});
+        this.setState({detailsModalVisible: false} as State);
     }
 
     showConfirmationModal(courseId) {
         this.props.actions.loadCourse(courseId)
             .then(() => {
-                this.setState({confirmationVisible: true});
+                this.setState({confirmationVisible: true} as State);
             });
     }
 
     closeConfirmationModal() {
-        this.setState({confirmationVisible: false});
+        this.setState({confirmationVisible: false} as State);
     }
 
     render() {
