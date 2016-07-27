@@ -9,6 +9,10 @@ export function configRouter (router) {
         '/about': {
             name: 'about',
             component: require('./components/about.vue')
+        },
+        '/students': {
+            name: 'students',
+            component: require('./components/students.vue')
         }
     });
 }

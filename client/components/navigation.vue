@@ -19,6 +19,9 @@
                     <li role="presentation">
                         <a v-link="{ name: 'about'}" class="nav">About</a>
                     </li>
+                    <li role="presentation">
+                        <a v-link="{ name: 'students'}" class="nav">Students</a>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

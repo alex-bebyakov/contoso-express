@@ -4,7 +4,9 @@ import * as toastr from 'toastr';
 export default {
     showMessage: showMessage,
     showWarning: showWarning,
-    showError: showError
+    showError: showError,
+    registerKeyListener: registerKeyListener,
+    unRegisterKeyListener: unRegisterKeyListener
 };
 
 function setToasterOptions() {
@@ -29,4 +31,16 @@ function showWarning(message) {
 
 function showMessage(message) {
     toastr.success(message);
+}
+
+//TODO support multiple callbacks
+function registerKeyListener(callback) {
+    document.onkeyup = (e: any) => {
+        e = e || window.event;
+        callback(e);
+    };
+}
+
+function unRegisterKeyListener() {
+    document.onkeyup = null;
 }
