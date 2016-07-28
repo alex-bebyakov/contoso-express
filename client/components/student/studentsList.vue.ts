@@ -1,4 +1,4 @@
-import { loadStudents, deleteStudent, selectStudent } from '../../vuex/actions';
+import { loadStudents, deleteStudent, loadStudent } from '../../vuex/actions';
 const studentRow = require('./studentRow.vue');
 const simpleConfirm = require('./../elements/simpleConfirm.vue');
 const studentDetails = require('./studentDetails.vue');
@@ -20,7 +20,7 @@ export default {
         actions: {
             loadStudents,
             deleteStudent,
-            selectStudent
+            loadStudent
         }
     },
     created() {
@@ -34,8 +34,8 @@ export default {
                 this.deleteStudent(studentId);
             };
         },
-        studentDetailsAction(student) {
-            this.selectStudent(student);
+        studentDetailsAction(studentId) {
+            this.loadStudent(studentId);
             this.showDetailsModal = true;
         }
     }

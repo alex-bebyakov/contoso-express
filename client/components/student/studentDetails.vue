@@ -9,11 +9,10 @@
                 <display-row :label="'First Name'" :value="student.firstName"></display-row>
                 <display-row :label="'Enrollment Date'" :value="enrollmentDate"></display-row>
 
-                <div class="form-group">
+                <div class="form-group" v-if="isAnyEnrollments">
                     <label class="col-xs-3 form-label">Enrollments:</label>
                     <div class="col-xs-9">
-                        TODO
-                    <!--    <StudentEnrollmentsList enrollments={enrollments} />-->
+                        <student-enrollments-list :enrollments="enrollments"></student-enrollments-list>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import {
     LOAD_STUDENTS_STATISTICS,
     LOAD_STUDENTS,
     COUNT_STUDENTS,
-    SELECT_STUDENT
+    LOAD_STUDENT
 } from '../mutationTypes';
 
 // initial state
@@ -24,7 +24,7 @@ const mutations = {
     [COUNT_STUDENTS] (state, count) {
         state.totalCount = count;
     },
-    [SELECT_STUDENT] (state, student) {
+    [LOAD_STUDENT] (state, student) {
         state.student = student;
     }
 };

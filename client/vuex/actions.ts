@@ -1,4 +1,5 @@
 import helper from '../helpers/uiHelper';
+import dateFormatter from '../formatters/dateFormatter';
 import * as types from './mutationTypes';
 import * as _ from 'lodash';
 import studentService from '../services/studentService';
@@ -36,6 +37,28 @@ export const deleteStudent = (store, studentId) => {
         });
 };
 
-export const selectStudent = (store, student) => {
-    store.dispatch(types.SELECT_STUDENT, student);
+export const loadStudent = (store, studentId) => {
+    const {dispatch, state} = store;
+
+    let action: any = Promise.resolve(null);
+
+    if (_.isNumber(studentId)) {
+        action = studentService.getStudent(studentId);
+    }
+
+    return action
+        .then(student => {
+            if (!student) {
+                student = {
+                    firstName: '',
+                    lastName: '',
+                    enrollmentDate: dateFormatter.currentDate()
+                };
+            }
+
+            store.dispatch(types.LOAD_STUDENT, student);
+        })
+        .catch(error => {
+            throw(error);
+        });
 };

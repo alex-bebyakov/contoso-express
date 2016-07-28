@@ -22,7 +22,7 @@ export default {
             this.deleteStudentAction(this.student.id);
         },
         showDetails() {
-            this.studentDetailsAction(this.student);
+            this.studentDetailsAction(this.student.id);
         }
     }
 };
