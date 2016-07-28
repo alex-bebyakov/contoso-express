@@ -15,10 +15,12 @@ export const loadStudentsStatistics = (store) => {
         });
 };
 
-export const loadStudents = (store, search, sortOrder, pageNumber, pageSize) => {
+export const loadStudents = (store) => {
     const {dispatch, state} = store;
 
-    return studentService.getStudents(search, sortOrder, pageNumber, pageSize)
+    let studentsState = state.students;
+
+    return studentService.getStudents(studentsState.search, studentsState.sortOrder, studentsState.pageNumber, studentsState.pageSize)
         .then(data => {
             dispatch(types.LOAD_STUDENTS, data.rows);
             dispatch(types.COUNT_STUDENTS, data.count);
@@ -31,7 +33,7 @@ export const deleteStudent = (store, studentId) => {
     return studentService.deleteStudent(studentId)
         .then(() => {
             helper.showMessage(`The student is removed successfully`);
-            loadStudents(store, '', '', 1, 3);
+            loadStudents(store);
         }).catch(error => {
             throw(error);
         });
@@ -68,6 +70,23 @@ export const saveStudent = (store, student) => {
         .then(() => {
             let message = student.id ? 'The student was updated successfully' : 'The student was added successfully';
             helper.showMessage(message);
-            loadStudents(store, '', '', 1, 3);
+            loadStudents(store);
         });
+};
+
+export const changePage = (store, newPageNumber) => {
+    store.dispatch(types.CHANGE_PAGE, newPageNumber);
+};
+
+export const searchStudents = (store, searchString) => {
+    store.dispatch(types.SEARCH_STUDENTS, searchString);
+    store.dispatch(types.CHANGE_PAGE, 1);
+
+    loadStudents(store);
+};
+
+export const changeSortOrder = (store, sortOrder) => {
+    store.dispatch(types.CHANGE_SORT_ORDER, sortOrder);
+
+    loadStudents(store);
 };

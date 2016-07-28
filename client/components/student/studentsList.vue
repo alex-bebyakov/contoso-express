@@ -1,13 +1,13 @@
 <template>
-    <table class="table">
+    <table class="table" v-if="isAnyStudents">
         <thead>
             <tr>
                 <th>
-                    <a href="#" value="name">Last Name</a>
+                    <a href="#" value="name" @click="changeSortOrder('name')">Last Name</a>
                 </th>
                 <th>First Name</th>
                 <th>
-                    <a href="#" value="date">Enrollment Date</a>
+                    <a href="#" value="date" @click="changeSortOrder('date')">Enrollment Date</a>
                 </th>
                 <th></th>
             </tr>
@@ -19,11 +19,16 @@
         </tbody>
     </table>
 
+    <div id="message" v-if="!isAnyStudents">{{infoMessage}}</div>
+
     <simple-confirm :show.sync="showConfirm" :confirm-action.sync="confirmAction"></simple-confirm>
     <student-details :student="student" :show.sync="showDetailsModal"></student-details>
     <student-save :student="student" :show.sync="showEditModal"></student-save>
 </template>
 <style lang="less" rel="stylesheet/less">
-
+    #message {
+        font-size: 16px;
+        padding-top: 30px;
+    }
 </style>
 <script lang="ts" src="./studentsList.vue.ts"></script>
