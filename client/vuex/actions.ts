@@ -119,6 +119,34 @@ export const deleteCourse = (store, courseId) => {
         });
 };
 
+export const loadCourse = (store, courseId) => {
+    const {dispatch, state} = store;
+
+    let action: any = Promise.resolve(null);
+
+    if (_.isNumber(courseId)) {
+        action = courseService.getCourse(courseId);
+    }
+
+    return action
+        .then(course => {
+            if (!course) {
+                course = {
+                    number: '',
+                    title: '',
+                    credits: '',
+                    departmentId: '',
+                    department: {name: ''}
+                };
+            }
+
+            store.dispatch(types.LOAD_COURSE, course);
+        })
+        .catch(error => {
+            throw(error);
+        });
+};
+
 export const changeSelectedDepartment = (store, departmentId) => {
     store.dispatch(types.CHANGE_SELECTED_DEPARTMENT, departmentId);
 };

@@ -1,13 +1,15 @@
-import {loadCourses, deleteCourse} from '../../vuex/actions';
+import {loadCourses, deleteCourse, loadCourse} from '../../vuex/actions';
 const courseRow = require('./courseRow.vue');
 const simpleConfirm = require('./../elements/simpleConfirm.vue');
+const courseDetails = require('./courseDetails.vue');
 
 export default {
-    components: {courseRow, simpleConfirm},
+    components: {courseRow, simpleConfirm, courseDetails},
     data () {
         return {
             showConfirm: false,
-            confirmAction: null      
+            confirmAction: null,
+            showDetailsModal: false
         };
     },
     vuex: {
@@ -17,7 +19,8 @@ export default {
         },
         actions: {
             loadCourses,
-            deleteCourse
+            deleteCourse,
+            loadCourse
         }
     },
     created() {
@@ -30,6 +33,10 @@ export default {
             this.confirmAction = () => {
                 this.deleteCourse(courseId);
             };
+        },
+        courseDetailsAction(courseId) {
+            this.loadCourse(courseId);
+            this.showDetailsModal = true;
         }
     }
 };
