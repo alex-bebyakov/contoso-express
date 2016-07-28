@@ -3,6 +3,10 @@ import dateFormatter from '../formatters/dateFormatter';
 import * as types from './mutationTypes';
 import * as _ from 'lodash';
 import studentService from '../services/studentService';
+import courseService from '../services/courseService';
+import departmentService from '../services/departmentService';
+
+//student actions
 
 export const loadStudentsStatistics = (store) => {
     const {dispatch, state} = store;
@@ -89,4 +93,35 @@ export const changeSortOrder = (store, sortOrder) => {
     store.dispatch(types.CHANGE_SORT_ORDER, sortOrder);
 
     loadStudents(store);
+};
+
+//course actions
+
+export const loadCourses = (store) => {
+    const {dispatch, state} = store;
+    
+    return courseService.getCourses(state.courses.departmentId)
+        .then(courses => {
+            dispatch(types.LOAD_COURSES, courses);
+        }).catch(error => {
+            throw(error);
+        });
+    
+};
+
+export const changeSelectedDepartment = (store, departmentId) => {
+    store.dispatch(types.CHANGE_SELECTED_DEPARTMENT, departmentId);
+};
+
+//departments actions
+
+export const loadDepartments = (store) => {
+    const {dispatch, state} = store;
+
+    return departmentService.getDepartments()
+        .then(departments => {
+            dispatch(types.LOAD_DEPARTMENTS, departments);
+        }).catch(error => {
+            throw(error);
+        });
 };

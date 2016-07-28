@@ -13,6 +13,10 @@ export function configRouter (router) {
         '/students': {
             name: 'students',
             component: require('./components/students.vue')
+        },
+        '/courses': {
+            name: 'courses',
+            component: require('./components/courses.vue')
         }
     });
 }
