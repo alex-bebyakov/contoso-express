@@ -5,6 +5,7 @@ declare module 'vuex' {
 
 declare module 'vue-strap' {
     let modal: any;
+    let datepicker: any;
 }
 
 interface Window {

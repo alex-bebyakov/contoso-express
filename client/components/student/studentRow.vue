@@ -4,7 +4,7 @@
         <td>{{student.firstName}}</td>
         <td>{{enrollmentDateDisplay}}</td>
         <td class="tools">
-            <a href="#"><i class="fa fa-pencil fa-lg"></i></a>
+            <a href="#" @click="showEdit"><i class="fa fa-pencil fa-lg"></i></a>
 
             <a href="#" @click="showDetails"><i class="fa fa-info fa-lg"></i></a>
 

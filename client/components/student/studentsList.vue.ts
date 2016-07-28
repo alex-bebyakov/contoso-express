@@ -2,14 +2,16 @@ import { loadStudents, deleteStudent, loadStudent } from '../../vuex/actions';
 const studentRow = require('./studentRow.vue');
 const simpleConfirm = require('./../elements/simpleConfirm.vue');
 const studentDetails = require('./studentDetails.vue');
+const studentSave = require('./studentSave.vue');
 
 export default {
-    components: {studentRow, simpleConfirm, studentDetails},
+    components: {studentRow, simpleConfirm, studentDetails, studentSave},
     data () {
         return {
             showConfirm: false,
             confirmAction: null,
-            showDetailsModal: false
+            showDetailsModal: false,
+            showEditModal: false
         };
     },
     vuex: {
@@ -37,6 +39,10 @@ export default {
         studentDetailsAction(studentId) {
             this.loadStudent(studentId);
             this.showDetailsModal = true;
+        },
+        editStudentAction(studentId) {
+            this.loadStudent(studentId);
+            this.showEditModal = true;
         }
     }
 };

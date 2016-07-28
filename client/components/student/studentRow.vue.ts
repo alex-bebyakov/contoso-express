@@ -10,6 +10,9 @@ export default {
         },
         studentDetailsAction: {
             type: Function
+        },
+        editStudentAction: {
+            type: Function
         }
     },
     computed: {
@@ -23,6 +26,9 @@ export default {
         },
         showDetails() {
             this.studentDetailsAction(this.student.id);
+        },
+        showEdit() {
+            this.editStudentAction(this.student.id);
         }
     }
 };

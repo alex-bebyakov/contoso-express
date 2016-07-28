@@ -62,3 +62,12 @@ export const loadStudent = (store, studentId) => {
             throw(error);
         });
 };
+
+export const saveStudent = (store, student) => {
+    return studentService.saveStudent(student)
+        .then(() => {
+            let message = student.id ? 'The student was updated successfully' : 'The student was added successfully';
+            helper.showMessage(message);
+            loadStudents(store, '', '', 1, 3);
+        });
+};
