@@ -10,9 +10,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr is="course-row" v-for="course in courses" :course="course"></tr>
+            <tr is="course-row" v-for="course in courses" :course="course"
+                :delete-course-action="deleteCourseAction"></tr>
         </tbody>
     </table>
+
+    <simple-confirm :show.sync="showConfirm" :confirm-action.sync="confirmAction"></simple-confirm>
 </template>
 <style lang="less" rel="stylesheet/less">
 

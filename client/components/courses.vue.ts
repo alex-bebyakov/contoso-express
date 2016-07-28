@@ -30,6 +30,8 @@ export default {
         }
     },
     created() {
+        this.selectedDepartment = '';
+        this.changeSelectedDepartment(this.selectedDepartment);
         this.loadDepartments();
     }
 };

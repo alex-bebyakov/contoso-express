@@ -9,7 +9,7 @@
 
             <a href="#"><i class="fa fa-info fa-lg"></i></a>
 
-            <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+            <a href="#"  @click="deleteCourse"><i class="fa fa-trash-o fa-lg"></i></a>
         </td>
     </tr>
 </template>

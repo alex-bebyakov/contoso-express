@@ -109,6 +109,16 @@ export const loadCourses = (store) => {
     
 };
 
+export const deleteCourse = (store, courseId) => {
+    return courseService.deleteCourse(courseId)
+        .then(() => {
+            helper.showMessage(`The course is removed successfully`);
+            loadCourses(store);
+        }).catch(error => {
+            throw(error);
+        });
+};
+
 export const changeSelectedDepartment = (store, departmentId) => {
     store.dispatch(types.CHANGE_SELECTED_DEPARTMENT, departmentId);
 };
