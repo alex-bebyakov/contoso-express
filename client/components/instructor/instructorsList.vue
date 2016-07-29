@@ -13,7 +13,8 @@
         <tbody>
             <tr is="instructor-row" v-for="instructor in instructors" :instructor="instructor"
                 :selected-instructor-id="selectedInstructorId" :select-instructor-action="selectInstructorAction"
-                :delete-instructor-action="deleteInstructorAction" :instructor-details-action="instructorDetailsAction"></tr>
+                :delete-instructor-action="deleteInstructorAction" :instructor-details-action="instructorDetailsAction"
+                :edit-instructor-action="editInstructorAction"></tr>
         </tbody>
     </table>
 
@@ -26,6 +27,8 @@
     <simple-confirm :show.sync="showConfirm" :confirm-action.sync="confirmAction"></simple-confirm>
 
     <instructor-details :instructor="instructor" :show.sync="showDetailsModal"></instructor-details>
+
+    <instructor-save :instructor="instructor" :show.sync="showEditModal"></instructor-save>
 </template>
 <style lang="less" rel="stylesheet/less">
 

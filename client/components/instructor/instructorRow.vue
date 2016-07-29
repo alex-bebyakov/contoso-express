@@ -10,7 +10,7 @@
         <td class="tools">
             <a href="#" @click="selectInstructor"><i class="fa fa-hand-o-up fa-lg"></i></a>
 
-            <a href="#"><i class="fa fa-pencil fa-lg"></i></a>
+            <a href="#" @click="showEdit"><i class="fa fa-pencil fa-lg"></i></a>
 
             <a href="#" @click="showDetails"><i class="fa fa-info fa-lg"></i></a>
 

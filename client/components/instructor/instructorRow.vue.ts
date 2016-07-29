@@ -16,6 +16,9 @@ export default {
         },
         instructorDetailsAction: {
             type: Function
+        },
+        editInstructorAction: {
+            type: Function
         }
     },
     computed: {
@@ -38,6 +41,9 @@ export default {
         },
         showDetails() {
             this.instructorDetailsAction(this.instructor.id);
+        },
+        showEdit() {
+            this.editInstructorAction(this.instructor.id);
         }
     }
 };

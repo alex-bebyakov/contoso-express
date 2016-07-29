@@ -222,6 +222,21 @@ export const deleteInstructor = (store, instructorId) => {
         });
 };
 
+export const saveInstructor = (store, instructor, selectedCourses) => {
+    instructor.courses = [];
+    
+    _.forEach(selectedCourses, (course) => {
+        instructor.courses.push({id: course});
+    });
+
+    return instructorService.saveInstructor(instructor)
+        .then(() => {
+            let message = instructor.id ? 'Instructor was updated successfully' : 'Instructor was added successfully';
+            helper.showMessage(message);
+            loadInstructors(store);
+        });
+};
+
 //enrollment actions
 
 export const loadEnrollments = (store, courseId) => {
