@@ -7,4 +7,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="ts" src="./studentStatisticsRow.vue.ts"></script>
+<script lang="awesome-typescript" src="./studentStatisticsRow.vue.ts"></script>

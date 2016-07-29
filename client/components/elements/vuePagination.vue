@@ -68,6 +68,6 @@
 <style>
 
 </style>
-<script lang="ts" src="./vuePagination.vue.ts"></script>
+<script lang="awesome-typescript" src="./vuePagination.vue.ts"></script>
 
 

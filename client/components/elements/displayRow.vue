@@ -8,4 +8,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="ts" src="./displayRow.vue.ts"></script>
+<script lang="awesome-typescript" src="./displayRow.vue.ts"></script>
