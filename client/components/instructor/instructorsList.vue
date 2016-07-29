@@ -12,7 +12,8 @@
         </thead>
         <tbody>
             <tr is="instructor-row" v-for="instructor in instructors" :instructor="instructor"
-                :selected-instructor-id="selectedInstructorId" :select-instructor-action="selectInstructorAction"></tr>
+                :selected-instructor-id="selectedInstructorId" :select-instructor-action="selectInstructorAction"
+                :delete-instructor-action="deleteInstructorAction"></tr>
         </tbody>
     </table>
 
@@ -21,6 +22,8 @@
     </instructor-courses-list>
 
     <instructor-students-list :show.sync="selectCourseVisible" :selected-course-id="selectedCourseId"></instructor-students-list>
+
+    <simple-confirm :show.sync="showConfirm" :confirm-action.sync="confirmAction"></simple-confirm>
 </template>
 <style lang="less" rel="stylesheet/less">
 

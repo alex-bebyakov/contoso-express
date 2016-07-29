@@ -1,16 +1,19 @@
 const instructorRow = require('./instructorRow.vue');
 const instructorCoursesList = require('./instructorCoursesList.vue');
 const instructorStudentsList = require('./instructorStudentsList.vue');
-import {loadInstructor, loadEnrollments} from '../../vuex/actions';
+import {loadInstructor, loadEnrollments, deleteInstructor} from '../../vuex/actions';
+const simpleConfirm = require('./../elements/simpleConfirm.vue');
 
 export default {
-    components: {instructorRow, instructorCoursesList, instructorStudentsList},
+    components: {instructorRow, instructorCoursesList, instructorStudentsList, simpleConfirm},
     data() {
         return {
             selectedInstructorId: 0,
             selectInstructorVisible: false,
             selectedCourseId: 0,
-            selectCourseVisible: false
+            selectCourseVisible: false,
+            showConfirm: false,
+            confirmAction: null
         };
     },
     vuex: {
@@ -20,7 +23,8 @@ export default {
         },
         actions: {
             loadInstructor,
-            loadEnrollments
+            loadEnrollments,
+            deleteInstructor
         }
     },
     methods: {
@@ -34,6 +38,13 @@ export default {
             this.loadEnrollments(courseId);
             this.selectedCourseId = courseId;
             this.selectCourseVisible = true;
+        },
+        deleteInstructorAction(instructorId) {
+            this.showConfirm = true;
+
+            this.confirmAction = () => {
+                this.deleteInstructor(instructorId);
+            };
         }
     }
 };

@@ -38,7 +38,7 @@ export const loadStudents = (store) => {
 export const deleteStudent = (store, studentId) => {
     return studentService.deleteStudent(studentId)
         .then(() => {
-            helper.showMessage(`The student is removed successfully`);
+            helper.showMessage(`Student was removed successfully`);
             loadStudents(store);
         }).catch(error => {
             throw(error);
@@ -74,7 +74,7 @@ export const loadStudent = (store, studentId) => {
 export const saveStudent = (store, student) => {
     return studentService.saveStudent(student)
         .then(() => {
-            let message = student.id ? 'The student was updated successfully' : 'The student was added successfully';
+            let message = student.id ? 'Student was updated successfully' : 'Student was added successfully';
             helper.showMessage(message);
             loadStudents(store);
         });
@@ -114,7 +114,7 @@ export const loadCourses = (store) => {
 export const deleteCourse = (store, courseId) => {
     return courseService.deleteCourse(courseId)
         .then(() => {
-            helper.showMessage(`The course is removed successfully`);
+            helper.showMessage(`Course was removed successfully`);
             loadCourses(store);
         }).catch(error => {
             throw(error);
@@ -152,7 +152,7 @@ export const loadCourse = (store, courseId) => {
 export const saveCourse = (store, course) => {
     return courseService.saveCourse(course)
         .then(() => {
-            let message = course.id ? 'The course was updated successfully' : 'The course was added successfully';
+            let message = course.id ? 'Course was updated successfully' : 'Course was added successfully';
             helper.showMessage(message);
             loadCourses(store);
         });
@@ -208,6 +208,16 @@ export const loadInstructor = (store, instructorId) => {
             dispatch(types.LOAD_INSTRUCTOR, instructor);
         })
         .catch(error => {
+            throw(error);
+        });
+};
+
+export const deleteInstructor = (store, instructorId) => {
+    return instructorService.deleteInstructor(instructorId)
+        .then(() => {
+            helper.showMessage(`Instructor was removed successfully`);
+            loadInstructors(store);
+        }).catch(error => {
             throw(error);
         });
 };

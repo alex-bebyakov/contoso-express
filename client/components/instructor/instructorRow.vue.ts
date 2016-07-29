@@ -10,6 +10,9 @@ export default {
         },
         selectInstructorAction: {
             type: Function
+        },
+        deleteInstructorAction: {
+            type: Function
         }
     },
     computed: {
@@ -26,6 +29,9 @@ export default {
     methods: {
         selectInstructor() {
             this.selectInstructorAction(this.instructor.id);
+        },
+        deleteInstructor() {
+            this.deleteInstructorAction(this.instructor.id);
         }
     }
 };
