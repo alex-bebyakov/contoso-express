@@ -4,14 +4,15 @@ import {
 
 // initial state
 const state = {
-    list: []
+    list: [],
+    department: {}
 };
 
 // mutations
 const mutations = {
     [LOAD_DEPARTMENTS] (state, departments) {
         state.list = departments;
-    },
+    }
 };
 
 export default {

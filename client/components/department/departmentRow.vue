@@ -1,0 +1,19 @@
+<template>
+    <tr>
+        <td>{{department.name}}</td>
+        <td>{{budgetDisplay}}</td>
+        <td>{{startDateDisplay}}</td>
+        <td>{{fullName}}</td>
+        <td class="tools">
+            <a href="#"><i class="fa fa-pencil fa-lg"></i></a>
+
+            <a href="#"><i class="fa fa-info fa-lg"></i></a>
+
+            <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+        </td>
+    </tr>
+</template>
+<style lang="less" rel="stylesheet/less">
+
+</style>
+<script lang="awesome-typescript" src="./departmentRow.vue.ts"></script>
