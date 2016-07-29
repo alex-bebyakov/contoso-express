@@ -5,6 +5,8 @@ import * as _ from 'lodash';
 import studentService from '../services/studentService';
 import courseService from '../services/courseService';
 import departmentService from '../services/departmentService';
+import instructorService from '../services/instructorService';
+import enrollmentService from '../services/enrollmentService';
 
 //student actions
 
@@ -158,6 +160,69 @@ export const saveCourse = (store, course) => {
 
 export const changeSelectedDepartment = (store, departmentId) => {
     store.dispatch(types.CHANGE_SELECTED_DEPARTMENT, departmentId);
+};
+
+//instructor actions
+
+export const loadInstructors = (store) => {
+    const {dispatch, state} = store;
+
+    return instructorService.getInstructors()
+        .then(instructors => {
+            dispatch(types.LOAD_INSTRUCTORS, instructors);
+        }).catch(error => {
+            throw(error);
+        });
+
+};
+
+export const loadInstructor = (store, instructorId) => {
+    const {dispatch, state} = store;
+
+    let action: any = Promise.resolve(null);
+
+    if (_.isNumber(instructorId)) {
+        action = instructorService.getInstructor(instructorId);
+    }
+
+    return action
+        .then(instructor => {
+            if (!instructor) {
+                instructor = {
+                    firstName: '',
+                    lastName: '',
+                    hireDate: dateFormatter.currentDate(),
+                    officeAssignment: {
+                        location: ''
+                    },
+                    courses: []
+                };
+            } else {
+                if (!instructor.officeAssignment) {
+                    instructor.officeAssignment = {
+                        location: ''
+                    };
+                }
+            }
+
+            dispatch(types.LOAD_INSTRUCTOR, instructor);
+        })
+        .catch(error => {
+            throw(error);
+        });
+};
+
+//enrollment actions
+
+export const loadEnrollments = (store, courseId) => {
+    const {dispatch, state} = store;
+    
+    return enrollmentService.getEnrollments(courseId)
+        .then(enrollments => {
+            dispatch(types.LOAD_ENROLLMENTS, enrollments);
+        }).catch(error => {
+            throw(error);
+        });
 };
 
 //departments actions

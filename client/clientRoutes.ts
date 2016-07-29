@@ -17,6 +17,10 @@ export function configRouter (router) {
         '/courses': {
             name: 'courses',
             component: require('./components/courses.vue')
+        },
+        '/instructors': {
+            name: 'instructors',
+            component: require('./components/instructors.vue')
         }
     });
 }
