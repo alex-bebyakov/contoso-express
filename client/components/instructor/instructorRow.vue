@@ -12,7 +12,7 @@
 
             <a href="#"><i class="fa fa-pencil fa-lg"></i></a>
 
-            <a href="#"><i class="fa fa-info fa-lg"></i></a>
+            <a href="#" @click="showDetails"><i class="fa fa-info fa-lg"></i></a>
 
             <a href="#" @click="deleteInstructor"><i class="fa fa-trash-o fa-lg"></i></a>
         </td>

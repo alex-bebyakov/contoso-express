@@ -13,6 +13,9 @@ export default {
         },
         deleteInstructorAction: {
             type: Function
+        },
+        instructorDetailsAction: {
+            type: Function
         }
     },
     computed: {
@@ -32,6 +35,9 @@ export default {
         },
         deleteInstructor() {
             this.deleteInstructorAction(this.instructor.id);
+        },
+        showDetails() {
+            this.instructorDetailsAction(this.instructor.id);
         }
     }
 };
