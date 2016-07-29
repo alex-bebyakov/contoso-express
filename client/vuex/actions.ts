@@ -147,6 +147,15 @@ export const loadCourse = (store, courseId) => {
         });
 };
 
+export const saveCourse = (store, course) => {
+    return courseService.saveCourse(course)
+        .then(() => {
+            let message = course.id ? 'The course was updated successfully' : 'The course was added successfully';
+            helper.showMessage(message);
+            loadCourses(store);
+        });
+};
+
 export const changeSelectedDepartment = (store, departmentId) => {
     store.dispatch(types.CHANGE_SELECTED_DEPARTMENT, departmentId);
 };

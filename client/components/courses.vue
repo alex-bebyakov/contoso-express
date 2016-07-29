@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h2>Courses</h2>
-        <a href="#">Create New</a>
+        <a href="#" @click="showAdd">Create New</a>
 
         <div id="filter-div">
             Select Department:
@@ -15,6 +15,8 @@
         </div>
 
         <courses-list></courses-list>
+
+        <course-save :course="course" :show.sync="showAddModal"></course-save>
     </div >
 </template>
 <style lang="less" rel="stylesheet/less">

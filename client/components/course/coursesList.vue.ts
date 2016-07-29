@@ -2,14 +2,16 @@ import {loadCourses, deleteCourse, loadCourse} from '../../vuex/actions';
 const courseRow = require('./courseRow.vue');
 const simpleConfirm = require('./../elements/simpleConfirm.vue');
 const courseDetails = require('./courseDetails.vue');
+const courseSave = require('./courseSave.vue');
 
 export default {
-    components: {courseRow, simpleConfirm, courseDetails},
+    components: {courseRow, simpleConfirm, courseDetails, courseSave},
     data () {
         return {
             showConfirm: false,
             confirmAction: null,
-            showDetailsModal: false
+            showDetailsModal: false,
+            showEditModal: false
         };
     },
     vuex: {
@@ -37,6 +39,10 @@ export default {
         courseDetailsAction(courseId) {
             this.loadCourse(courseId);
             this.showDetailsModal = true;
+        },
+        editCourseAction(courseId) {
+            this.loadCourse(courseId);
+            this.showEditModal = true;
         }
     }
 };

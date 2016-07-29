@@ -8,6 +8,9 @@ export default {
         },
         courseDetailsAction: {
             type: Function
+        },
+        editCourseAction: {
+            type: Function
         }
     },
     methods: {
@@ -16,6 +19,9 @@ export default {
         },
         showDetails() {
             this.courseDetailsAction(this.course.id);
+        },
+        showEdit() {
+            this.editCourseAction(this.course.id);
         }
     }
 };

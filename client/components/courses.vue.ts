@@ -1,22 +1,26 @@
 const coursesList = require('./course/coursesList.vue');
-import {loadDepartments, changeSelectedDepartment, loadCourses} from '../vuex/actions';
+const courseSave = require('./course/courseSave.vue');
+import {loadDepartments, changeSelectedDepartment, loadCourses, loadCourse} from '../vuex/actions';
 import {departmentSelectListItem} from '../formatters/entityFromatter';
 
 export default {
-    components: {coursesList},
+    components: {coursesList, courseSave},
     data () {
         return {
-            selectedDepartment: ''  
+            selectedDepartment: '',
+            showAddModal: false
         };
     },
     vuex: {
         getters: {
-            departments: ({departments}) => departments.list
+            departments: ({departments}) => departments.list,
+            course: ({courses}) => courses.course
         },
         actions: {
             loadDepartments,
             changeSelectedDepartment,
-            loadCourses
+            loadCourses,
+            loadCourse
         }
     },
     computed: {
@@ -27,6 +31,10 @@ export default {
     methods: {
         filter() {
             this.loadCourses();
+        },
+        showAdd() {
+            this.loadCourse(null);
+            this.showAddModal = true;
         }
     },
     created() {
