@@ -13,6 +13,11 @@ export default {
             default: false
         }
     },
+    data() {
+        return {
+            formIsInvalid: false
+        };
+    },
     computed: {
         header() {
             return this.course.id ? 'Edit Course' : 'Create Course';
@@ -31,11 +36,17 @@ export default {
     },
     methods: {
         cancel() {
+            this.formIsInvalid = false;
+            this.$resetValidation();
             this.show = false;
         },
         doAction() {
-            this.saveCourse(this.course);
-            this.show = false;
+            if (this.$courseValidation.invalid) {
+                this.formIsInvalid = true;
+            } else {
+                this.saveCourse(this.course);
+                this.cancel();
+            }
         }
     }  
 };

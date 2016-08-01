@@ -3,12 +3,14 @@ import * as VueRouter from 'vue-router';
 import store from './vuex/store';
 import { configRouter } from './clientRoutes';
 const Main = require('./components/main.vue');
+const VueValidator = require('vue-validator');
 
 require('../node_modules/toastr/build/toastr.min.css');
 require('../client/styles/app.less');
 
 // install router
 Vue.use(VueRouter);
+Vue.use(VueValidator);
 
 //TODO only for dev env
 Vue.config.debug = true;

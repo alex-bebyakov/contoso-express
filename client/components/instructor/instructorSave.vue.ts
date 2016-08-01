@@ -14,6 +14,11 @@ export default {
             default: false
         }
     },
+    data() {
+        return {
+            formIsInvalid: false
+        };
+    },
     computed: {
         header() {
             return this.instructor.id ? 'Edit Instructor' : 'Create Instructor';
@@ -45,11 +50,17 @@ export default {
     },
     methods: {
         cancel() {
+            this.formIsInvalid = false;
+            this.$resetValidation();
             this.show = false;
         },
         doAction() {
-            this.saveInstructor(this.instructor, this.selectedCourses);
-            this.show = false;
+            if (this.$instructorValidation.invalid) {
+                this.formIsInvalid = true;
+            } else {
+                this.saveInstructor(this.instructor, this.selectedCourses);
+                this.cancel();
+            }
         }
     },
     created() {

@@ -12,6 +12,11 @@ export default{
             default: false
         }
     },
+    data() {
+        return {
+            formIsInvalid: false
+        };
+    },
     computed: {
         header() {
             return this.student.id ? 'Edit Student' : 'Create Student';
@@ -24,11 +29,17 @@ export default{
     },
     methods: {
         cancel() {
+            this.formIsInvalid = false;
+            this.$resetValidation();
             this.show = false;
         },
         doAction() {
-            this.saveStudent(this.student);
-            this.show = false;
+            if (this.$studentValidation.invalid) {
+                this.formIsInvalid = true;
+            } else {
+                this.saveStudent(this.student);
+                this.cancel();
+            }
         }
     }
 };

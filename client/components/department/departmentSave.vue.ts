@@ -13,6 +13,11 @@ export default {
             default: false
         }
     },
+    data() {
+        return {
+            formIsInvalid: false
+        };
+    },
     computed: {
         header() {
             return this.department.id ? 'Edit Department' : 'Create Department';
@@ -35,11 +40,17 @@ export default {
     },
     methods: {
         cancel() {
+            this.formIsInvalid = false;
+            this.$resetValidation();
             this.show = false;
         },
         doAction() {
-            this.saveDepartment(this.department);
-            this.show = false;
+            if (this.$departmentValidation.invalid) {
+                this.formIsInvalid = true;
+            } else {
+                this.saveDepartment(this.department);
+                this.cancel();
+            }
         }
     }
 };
