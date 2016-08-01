@@ -1,5 +1,6 @@
 import {
-    LOAD_DEPARTMENTS
+    LOAD_DEPARTMENTS,
+    LOAD_DEPARTMENT
 } from '../mutationTypes';
 
 // initial state
@@ -12,6 +13,9 @@ const state = {
 const mutations = {
     [LOAD_DEPARTMENTS] (state, departments) {
         state.list = departments;
+    },
+    [LOAD_DEPARTMENT] (state, department) {
+        state.department = department;
     }
 };
 

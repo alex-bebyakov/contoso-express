@@ -272,3 +272,31 @@ export const deleteDepartment = (store, departmentId) => {
             throw(error);
         });
 };
+
+export const loadDepartment = (store, departmentId) => {
+    const {dispatch, state} = store;
+
+    let action: any = Promise.resolve(null);
+
+    if (_.isNumber(departmentId)) {
+        action = departmentService.getDepartment(departmentId);
+    }
+
+    return action
+        .then(department => {
+            if (!department) {
+                department = {
+                    name: '',
+                    budget: '',
+                    startDate: dateFormatter.currentDate(),
+                    instructorId: '',
+                    Instructor: {lastName: '', firstName: ''}
+                };
+            }
+
+            dispatch(types.LOAD_DEPARTMENT, department);
+        })
+        .catch(error => {
+            throw(error);
+        });
+};

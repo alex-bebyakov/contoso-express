@@ -9,6 +9,9 @@ export default {
         },
         deleteDepartmentAction: {
             type: Function
+        },
+        departmentDetailsAction: {
+            type: Function
         }
     },
     computed: {
@@ -26,6 +29,9 @@ export default {
     methods: {
         deleteDepartment() {
             this.deleteDepartmentAction(this.department.id);
+        },
+        showDetails() {
+            this.departmentDetailsAction(this.department.id);
         }
     }
 };

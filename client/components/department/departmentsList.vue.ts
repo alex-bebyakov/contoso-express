@@ -1,22 +1,26 @@
-import {loadDepartments, deleteDepartment} from '../../vuex/actions';
+import {loadDepartments, deleteDepartment, loadDepartment} from '../../vuex/actions';
 const departmentRow = require('./departmentRow.vue');
 const simpleConfirm = require('./../elements/simpleConfirm.vue');
+const departmentDetails = require('./departmentDetails.vue');
 
 export default {
-    components: {departmentRow, simpleConfirm},
+    components: {departmentRow, simpleConfirm, departmentDetails},
     data() {
         return {
             showConfirm: false,
-            confirmAction: null      
+            confirmAction: null,
+            showDetailsModal: false
         };
     },
     vuex: {
         getters: {
-            departments: ({departments}) => departments.list
+            departments: ({departments}) => departments.list,
+            department: ({departments}) => departments.department
         },
         actions: {
             loadDepartments,
-            deleteDepartment
+            deleteDepartment,
+            loadDepartment
         }
     },
     created() {
@@ -29,6 +33,10 @@ export default {
             this.confirmAction = () => {
                 this.deleteDepartment(departmentId);
             };
+        },
+        departmentDetailsAction(departmentId) {
+            this.loadDepartment(departmentId);
+            this.showDetailsModal = true;
         }
     }
 };
