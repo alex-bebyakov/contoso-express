@@ -300,3 +300,12 @@ export const loadDepartment = (store, departmentId) => {
             throw(error);
         });
 };
+
+export const saveDepartment = (store, department) => {
+    return departmentService.saveDepartment(department)
+        .then(() => {
+            let message = department.id ? 'Department was updated successfully' : 'Department was added successfully';
+            helper.showMessage(message);
+            loadDepartments(store);
+        });
+};

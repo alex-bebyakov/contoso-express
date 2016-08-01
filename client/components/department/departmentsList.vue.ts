@@ -2,14 +2,16 @@ import {loadDepartments, deleteDepartment, loadDepartment} from '../../vuex/acti
 const departmentRow = require('./departmentRow.vue');
 const simpleConfirm = require('./../elements/simpleConfirm.vue');
 const departmentDetails = require('./departmentDetails.vue');
+const departmentSave = require('./departmentSave.vue');
 
 export default {
-    components: {departmentRow, simpleConfirm, departmentDetails},
+    components: {departmentRow, simpleConfirm, departmentDetails, departmentSave},
     data() {
         return {
             showConfirm: false,
             confirmAction: null,
-            showDetailsModal: false
+            showDetailsModal: false,
+            showEditModal: false
         };
     },
     vuex: {
@@ -37,6 +39,10 @@ export default {
         departmentDetailsAction(departmentId) {
             this.loadDepartment(departmentId);
             this.showDetailsModal = true;
+        },
+        editDepartmentAction(departmentId) {
+            this.loadDepartment(departmentId);
+            this.showEditModal = true;
         }
     }
 };

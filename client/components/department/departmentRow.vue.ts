@@ -12,6 +12,9 @@ export default {
         },
         departmentDetailsAction: {
             type: Function
+        },
+        editDepartmentAction: {
+            type: Function
         }
     },
     computed: {
@@ -32,6 +35,9 @@ export default {
         },
         showDetails() {
             this.departmentDetailsAction(this.department.id);
+        },
+        showEdit() {
+            this.editDepartmentAction(this.department.id);
         }
     }
 };
