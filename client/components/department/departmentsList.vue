@@ -10,9 +10,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr is="department-row" v-for="department in departments" :department="department"></tr>
+            <tr is="department-row" v-for="department in departments" :department="department"
+                :delete-department-action="deleteDepartmentAction"></tr>
         </tbody>
     </table>
+
+    <simple-confirm :show.sync="showConfirm" :confirm-action.sync="confirmAction"></simple-confirm>
 </template>
 <style lang="less" rel="stylesheet/less">
 

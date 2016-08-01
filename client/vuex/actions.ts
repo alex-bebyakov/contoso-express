@@ -262,3 +262,13 @@ export const loadDepartments = (store) => {
             throw(error);
         });
 };
+
+export const deleteDepartment = (store, departmentId) => {
+    return departmentService.deleteDepartment(departmentId)
+        .then(() => {
+            helper.showMessage(`Department was removed successfully`);
+            loadDepartments(store);
+        }).catch(error => {
+            throw(error);
+        });
+};

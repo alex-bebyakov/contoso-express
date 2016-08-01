@@ -6,6 +6,9 @@ export default {
     props: {
         department: {
             type: Object
+        },
+        deleteDepartmentAction: {
+            type: Function
         }
     },
     computed: {
@@ -18,6 +21,11 @@ export default {
         },
         startDateDisplay() {
             return dateFormatter.date(this.department.startDate);
+        }
+    }, 
+    methods: {
+        deleteDepartment() {
+            this.deleteDepartmentAction(this.department.id);
         }
     }
 };
