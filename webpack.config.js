@@ -34,11 +34,15 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new ExtractTextPlugin('app.css', {allChunks: true})
-    ]
-    //if using ts-loader
-    // ts: {
-    //     configFileName: "tsconfig.webpack.json"
-    // }
+    ],
+    vue: {
+        loaders: {
+            ts: 'awesome-typescript'
+        }
+    },
+    ts: {
+        configFileName: "tsconfig.webpack.json"
+    }
 };
 
 function addExtras() {

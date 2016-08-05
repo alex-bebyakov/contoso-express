@@ -15,4 +15,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./studentRow.vue.ts"></script>
+<script lang="ts" src="./studentRow.vue.ts"></script>

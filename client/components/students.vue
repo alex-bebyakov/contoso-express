@@ -33,4 +33,4 @@
         }
     }
 </style>
-<script lang="awesome-typescript" src="./students.vue.ts"></script>
+<script lang="ts" src="./students.vue.ts"></script>

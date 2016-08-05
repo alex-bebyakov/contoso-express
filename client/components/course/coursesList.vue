@@ -23,4 +23,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./coursesList.vue.ts"></script>
+<script lang="ts" src="./coursesList.vue.ts"></script>

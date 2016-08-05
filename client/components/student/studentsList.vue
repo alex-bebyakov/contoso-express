@@ -31,4 +31,4 @@
         padding-top: 30px;
     }
 </style>
-<script lang="awesome-typescript" src="./studentsList.vue.ts"></script>
+<script lang="ts" src="./studentsList.vue.ts"></script>

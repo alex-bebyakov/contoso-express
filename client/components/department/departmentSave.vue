@@ -64,4 +64,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./departmentSave.vue.ts"></script>
+<script lang="ts" src="./departmentSave.vue.ts"></script>

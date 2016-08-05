@@ -19,4 +19,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./instructorDetails.vue.ts"></script>
+<script lang="ts" src="./instructorDetails.vue.ts"></script>

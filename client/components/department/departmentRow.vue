@@ -16,4 +16,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./departmentRow.vue.ts"></script>
+<script lang="ts" src="./departmentRow.vue.ts"></script>

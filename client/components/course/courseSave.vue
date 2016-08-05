@@ -66,4 +66,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./courseSave.vue.ts"></script>
+<script lang="ts" src="./courseSave.vue.ts"></script>

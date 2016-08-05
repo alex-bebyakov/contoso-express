@@ -16,5 +16,5 @@
 </template>
 <style>
 </style>
-<script lang="awesome-typescript" src="./main.vue.ts">
+<script lang="ts" src="./main.vue.ts">
 </script>

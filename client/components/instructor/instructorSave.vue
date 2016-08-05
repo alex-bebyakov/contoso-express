@@ -68,4 +68,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./instructorSave.vue.ts"></script>
+<script lang="ts" src="./instructorSave.vue.ts"></script>

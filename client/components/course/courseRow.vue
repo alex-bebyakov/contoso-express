@@ -16,4 +16,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./courseRow.vue.ts"></script>
+<script lang="ts" src="./courseRow.vue.ts"></script>

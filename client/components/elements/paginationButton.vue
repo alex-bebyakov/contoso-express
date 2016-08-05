@@ -7,4 +7,4 @@
 </template>
 <style>
 </style>
-<script lang="awesome-typescript" src="./paginationButton.vue.ts"></script>
+<script lang="ts" src="./paginationButton.vue.ts"></script>

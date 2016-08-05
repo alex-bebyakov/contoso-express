@@ -14,4 +14,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./studentEnrollmentsList.vue.ts"></script>
+<script lang="ts" src="./studentEnrollmentsList.vue.ts"></script>

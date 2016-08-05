@@ -33,4 +33,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./instructorsList.vue.ts"></script>
+<script lang="ts" src="./instructorsList.vue.ts"></script>

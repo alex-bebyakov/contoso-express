@@ -23,4 +23,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./departmentsList.vue.ts"></script>
+<script lang="ts" src="./departmentsList.vue.ts"></script>

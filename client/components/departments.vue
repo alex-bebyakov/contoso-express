@@ -11,4 +11,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src="./departments.vue.ts"></script>
+<script lang="ts" src="./departments.vue.ts"></script>

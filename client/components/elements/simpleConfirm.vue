@@ -14,4 +14,4 @@
 </template>
 <style>
 </style>
-<script lang="awesome-typescript" src="./simpleConfirm.vue.ts"></script>
+<script lang="ts" src="./simpleConfirm.vue.ts"></script>

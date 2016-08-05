@@ -28,4 +28,4 @@
         }
     }
 </style>
-<script lang="awesome-typescript" src="./courses.vue.ts"></script>
+<script lang="ts" src="./courses.vue.ts"></script>

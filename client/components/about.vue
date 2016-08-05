@@ -10,4 +10,4 @@
 <style lang="less" rel="stylesheet/less">
 
 </style>
-<script lang="awesome-typescript" src='./about.vue.ts'></script>
+<script lang="ts" src='./about.vue.ts'></script>
