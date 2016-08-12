@@ -62,6 +62,8 @@ export const loadStudent = (store, studentId) => {
                     lastName: '',
                     enrollmentDate: dateFormatter.currentDate()
                 };
+            } else {
+                student.enrollmentDate = dateFormatter.date(student.enrollmentDate);
             }
 
             store.dispatch(types.LOAD_STUDENT, student);
@@ -198,6 +200,8 @@ export const loadInstructor = (store, instructorId) => {
                     courses: []
                 };
             } else {
+                instructor.hireDate = dateFormatter.date(instructor.hireDate);
+
                 if (!instructor.officeAssignment) {
                     instructor.officeAssignment = {
                         location: ''
@@ -292,6 +296,8 @@ export const loadDepartment = (store, departmentId) => {
                     instructorId: '',
                     Instructor: {lastName: '', firstName: ''}
                 };
+            } else {
+                department.startDate = dateFormatter.date(department.startDate);
             }
 
             dispatch(types.LOAD_DEPARTMENT, department);

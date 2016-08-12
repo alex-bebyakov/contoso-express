@@ -34,7 +34,7 @@
                         <label class="col-xs-3 control-label">Hire Date:</label>
 
                         <div class="col-xs-9">
-                            <datepicker :value.sync="instructor.hireDate" :disabled-days-of-Week="disabled" :format="dd/MM/yyyy"
+                            <datepicker :value.sync="instructor.hireDate" :disabled-days-of-Week="disabled" format="MM/dd/yyyy"
                                         :show-reset-button="reset">
                             </datepicker>
                         </div>
