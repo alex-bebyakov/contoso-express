@@ -71,7 +71,13 @@
     "winston": "^2.2.0"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^1.1.1",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
+    "babel-preset-latest": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-1": "^6.13.0",
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
@@ -81,7 +87,7 @@
     "source-map-loader": "^0.1.5",
     "ts-loader": "^0.8.2",
     "tslint": "^3.11.0",
-    "typescript": "^1.8.10",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-node-externals": "^1.4.3"
   }
 }

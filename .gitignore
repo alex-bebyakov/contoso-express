@@ -6,7 +6,7 @@ client/typings/
 .idea/
 config/local.json
 data/db/
-server/test.ts
+server/test.js
 data/logs
 client/typings
 data/config/local.json
