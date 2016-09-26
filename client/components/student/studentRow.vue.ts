@@ -18,7 +18,16 @@ export default {
     computed: {
         enrollmentDateDisplay() {
             return dateFormatter.date(this.student.enrollmentDate);
+        },
+        isEditable() {
+            return this.student.userId === this.user.id;
         }
+    },
+    vuex: {
+        getters: {
+            user: ({user}) => user.currentUser,
+        },
+        actions: {}
     },
     methods: {
         deleteStudent() {

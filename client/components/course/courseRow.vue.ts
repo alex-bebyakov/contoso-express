@@ -13,6 +13,17 @@ export default {
             type: Function
         }
     },
+    computed: {
+        isEditable() {
+            return this.course.userId === this.user.id;
+        }
+    },
+    vuex: {
+        getters: {
+            user: ({user}) => user.currentUser,
+        },
+        actions: {}
+    },
     methods: {
         deleteCourse() {
             this.deleteCourseAction(this.course.id);

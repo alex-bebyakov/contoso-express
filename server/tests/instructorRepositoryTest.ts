@@ -34,6 +34,7 @@ describe('Instructor Repository', () => {
                 firstName: 'Test name',
                 lastName: 'Test last name',
                 hireDate: '11/03/1995',
+                userId: 188,
                 courses: [
                     {id: 1},
                     {id: 2}
@@ -58,6 +59,7 @@ describe('Instructor Repository', () => {
                 firstName: 'Name updated',
                 lastName: 'Last name updated',
                 hireDate: '11/03/2015',
+                userId: 188,
                 courses: [
                     {id: 2},
                     {id: 3}
@@ -91,7 +93,7 @@ describe('Instructor Repository', () => {
         });
 
         it('delete', (done) => {
-            return instructorRepository.deleteInstructor(6)
+            return instructorRepository.deleteInstructor(6, 188)
                 .then((data) => {
                     expect(data).not.to.be.null;
                     done();

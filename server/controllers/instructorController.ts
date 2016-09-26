@@ -36,7 +36,7 @@ async function getInstructor(req, res) {
 async function saveInstructor(req, res) {
     try {
         let data = req.body.instructor;
-
+        
         let schema = {
             id: Joi.number(),
             firstName: Joi.string().required(),
@@ -57,6 +57,8 @@ async function saveInstructor(req, res) {
 
         let instructor = await helper.loadSchema(data, schema);
 
+        instructor.userId = req.user ? req.user.id : null;
+        
         if (instructor.id) {
             result = await instructorRepository.updateInstructor(instructor);
         } else {
@@ -76,10 +78,11 @@ async function saveInstructor(req, res) {
 async function deleteInstructor(req, res) {
     try {
         let id = req.body.id;
+        let userId = req.user ? req.user.id : null;
 
-        await officeAssignmentRepository.deleteOfficeAssignmentByInstructorId(id);
+        await instructorRepository.deleteInstructor(id, userId);
         
-        await instructorRepository.deleteInstructor(id);
+        await officeAssignmentRepository.deleteOfficeAssignmentByInstructorId(id);
 
         return helper.sendData({}, res);
     } catch (err) {

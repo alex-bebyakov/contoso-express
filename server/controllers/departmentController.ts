@@ -47,7 +47,8 @@ async function saveDepartment(req, res) {
         let result = null;
 
         let department = await helper.loadSchema(data, schema);
-
+        department.userId = req.user ? req.user.id : null;
+        
         if (department.id) {
             result = await departmentRepository.updateDepartment(department);
         } else {
@@ -65,8 +66,9 @@ async function saveDepartment(req, res) {
 async function deleteDepartment(req, res) {
     try {
         let id = req.body.id;
+        let userId = req.user ? req.user.id : null;
 
-        await departmentRepository.deleteDepartment(id);
+        await departmentRepository.deleteDepartment(id, userId);
 
         return helper.sendData({}, res);
     } catch (err) {

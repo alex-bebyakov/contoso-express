@@ -5,6 +5,7 @@ import courses from './modules/courses';
 import departments from './modules/departments';
 import instructors from './modules/instructors';
 import enrollments from './modules/enrollments';
+import user from './modules/user';
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
         courses,
         departments,
         instructors,
-        enrollments
+        enrollments,
+        user
     }
 });

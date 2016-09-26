@@ -16,6 +16,7 @@ export interface User {
         local?: LocalProfile,
         google?: GoogleProfile
     },
+    userId: number,
     getFullName(): string,
     save(): any
 }
@@ -45,7 +46,8 @@ export interface Course {
     number: number,
     title: string,
     credits: number,
-    department?: Department
+    department?: Department,
+    userId: number
 }
 
 export interface Department {
@@ -53,7 +55,8 @@ export interface Department {
     name: string,
     budget: number,
     startDate: Date,
-    instructor?: Instructor
+    instructor?: Instructor,
+    userId: number
 }
 
 export interface Enrollment {
@@ -68,6 +71,7 @@ export interface Instructor {
     lastName: string,
     fullName: string,
     hireDate: Date,
+    userId: number,
     courses?: Course[]
     getFullName(): string
 }
@@ -84,5 +88,6 @@ export interface Student {
     lastName: string,
     fullName: string,
     enrollmentDate: Date,
+    userId: number,
     getFullName(): string
 }

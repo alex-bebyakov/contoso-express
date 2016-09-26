@@ -27,8 +27,17 @@ export default {
         },
         startDateDisplay() {
             return dateFormatter.date(this.department.startDate);
+        },
+        isEditable() {
+            return this.department.userId === this.user.id;
         }
-    }, 
+    },
+    vuex: {
+        getters: {
+            user: ({user}) => user.currentUser,
+        },
+        actions: {}
+    },
     methods: {
         deleteDepartment() {
             this.deleteDepartmentAction(this.department.id);

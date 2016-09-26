@@ -30,7 +30,16 @@ export default {
         },
         active() {
             return this.selectedInstructorId === this.instructor.id ? true : false;
+        },
+        isEditable() {
+            return this.instructor.userId === this.user.id;
         }
+    },
+    vuex: {
+        getters: {
+            user: ({user}) => user.currentUser,
+        },
+        actions: {}
     },
     methods: {
         selectInstructor() {

@@ -62,6 +62,7 @@ async function saveStudent(req, res) {
         let result = null;
 
         let student = await helper.loadSchema(data, schema);
+        student.userId = req.user ? req.user.id : null;
 
         if (student.id) {
             result = await studentRepository.updateStudent(student);
@@ -78,8 +79,9 @@ async function saveStudent(req, res) {
 async function deleteStudent(req, res) {
     try {
         let id = req.body.id;
+        let userId = req.user ? req.user.id : null;
 
-        await studentRepository.deleteStudent(id);
+        await studentRepository.deleteStudent(id, userId);
 
         return helper.sendData({}, res);
     } catch (err) {
