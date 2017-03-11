@@ -1,0 +1,30 @@
+{
+    "app": {
+        "appName": "myapp.com",
+        "isDevLocal": true,
+        "logErrors": true,
+        "rootUrl": "http://localhost:5002"
+    },
+    "email": {
+        "host": "smtp.mailgun.org",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "postmaster@sandbox******************.mailgun.org",
+            "pass": "******************"
+        }
+    },
+    "web": {
+        "port": 5002,
+        "sessionSecret": "secret_value_!?!"
+    },
+    "db": {
+        "host": "mongodb://127.0.0.1/test"
+    },
+    "resource": "../client/dist",
+    "format": {
+        "date": "MM/DD/YYYY",
+        "year": "YYYY",
+        "currencySymbol": "$"
+    }
+}

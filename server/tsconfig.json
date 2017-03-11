@@ -8,7 +8,7 @@
     "allowUnreachableCode": true
   },
   "exclude": [
-    ".",
+
     "node_modules"
   ]
 }

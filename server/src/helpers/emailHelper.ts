@@ -1,60 +1,39 @@
 import * as Promise from 'bluebird';
 import pathHelper from './pathHelper';
-
-const nodemailer = require('nodemailer');
-const EmailTemplate = require('email-templates').EmailTemplate;
-
-const emailTransport = nodemailer.createTransport();
+import {EmailOptions, EmailTemplateData} from "../../index";
+import {EmailTemplate} from 'email-templates'
+import {createTransport, SentMessageInfo} from 'nodemailer'
+import config from '../config'
 
 export default {
-    sendEmail,
-    sendEmailTemplate
+    sendEmail
 };
 
-interface EmailOptions {
-    from: string,
-    to: string,
-    subject?: string,
-    text?: string,
-    html?: string
-}
-
-function sendEmail(emailOptions: EmailOptions): Promise<Object> {
-    return new Promise<Object>((resolve, reject) => {
-        emailTransport.sendMail(emailOptions, function (error, info) {
-            if (error) return Promise.reject(error);
-
-            return info;
-        });
-    });
-}
-
-function sendEmailTemplate(templateName: string, data: Object, emailData: EmailOptions) {
-    return renderTemplate(templateName, data)
-        .then((data) => {
-            emailData.html = data.html;
-
-            if (!emailData.subject) emailData.subject = data.subject;
-
-            return new Promise((resolve, reject) => {
-                emailTransport.sendMail(emailData, function (err, info) {
-                    if (err) return reject(err);
-
+function sendEmail(templateName: string, templateData: EmailTemplateData,adress:string) {
+    return renderTemplate(templateName, templateData)
+        .then(data => {
+            let emailData: EmailOptions={
+                from: 'noreplay@'+config.app.appName,
+                to: adress,
+                subject: data.subject,
+                html: data.html
+            }
+             return new Promise((resolve, reject) => {
+               return createTransport(config.email).sendMail(emailData, function (error, info: SentMessageInfo) {
+                    if (error) return reject(error);
                     return resolve(info);
                 });
             });
         });
 }
 
-function renderTemplate(name: string, data: Object): Promise<any> {
-    let templateDir = pathHelper.getDataRelative('emails', name);
+function renderTemplate(name: string, templateData: EmailTemplateData): Promise<any> {
+    let templateDir = pathHelper.getRelative('templates',name)
     let template = new EmailTemplate(templateDir);
-
     return new Promise<any>((resolve, reject) => {
-        template.render(data, function (err, result) {
-            if (err) reject(err);
-
-            return resolve(result);
+        template.render(templateData, function (error, value) {
+            if (!error) return resolve(value);
+            return reject(error);
         });
     });
 }

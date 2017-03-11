@@ -1,38 +1,21 @@
-import logger from '../logger';
-import textValue from './textValueHelper';
-import config from '../config';
+import {IAppError} from "../../index";
+import textValue from './/textValueHelper';
 
 export default {
-    logError,
-    getErrorMessage
+    getAppErrorMessage
 };
 
-function getErrorMessage(error): string {
+function getAppErrorMessage(error:IAppError): string {
     if (!error) return '';
-
     if (error.isAppError) {
         if (!error.message) {
             let message = textValue.error(error.type, error.code, error.data);
-
-            if (!message) message = `Cannot find error message for type:${error.type} code:${error.code}`;
-
+            if (!message) {
+                message = `Cannot find error message for type:${error.type} code:${error.code}`;
+            }
             error.message = message;
         }
-
         if (error.uiShow) return error.message;
     }
-
-    if (config.app.isDevLocal) {
-        return error.message || error;
-    }
-
     return 'Server Error';
-}
-
-function logError(error) {
-    if (!config.app.logErrors) return;
-
-    if (error.isAppError && !error.log) return;
-
-    logger.error(error);
 }

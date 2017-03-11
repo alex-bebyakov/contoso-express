@@ -1,37 +1,52 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "devDependencies": {
-    "react-scripts": "0.6.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "copy-assets": "node tasks/copyAssets.js"
-  },
-  "dependencies": {
-    "bluebird": "^3.4.0",
-    "bootstrap": "^3.3.6",
-    "copy": "^0.3.0",
-    "font-awesome": "^4.6.3",
-    "fs-extra": "^0.30.0",
-    "jquery": "^3.0.0",
-    "json-loader": "^0.5.4",
-    "lodash": "^4.13.1",
-    "moment": "^2.14.1",
-    "react": "^15.3.2",
-    "react-bootstrap": "^0.30.5",
-    "react-bootstrap-datetimepicker": "0.0.22",
-    "react-dom": "^15.3.2",
-    "react-redux": "^4.4.5",
-    "react-router": "^2.4.1",
-    "react-router-bootstrap": "^0.23.0",
-    "redux": "^3.5.2",
-    "redux-immutable-state-invariant": "^1.2.3",
-    "redux-thunk": "^2.1.0",
-    "toastr": "^2.1.2"
-  }
+    "name": "client",
+    "version": "0.0.0",
+    "license": "MIT",
+    "angular-cli": {},
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "lint": "tslint \"src/**/*.ts\" --project src/tsconfig.json --type-check && tslint \"e2e/**/*.ts\" --project e2e/tsconfig.json --type-check",
+        "test": "ng test",
+        "pree2e": "webdriver-manager update --standalone false --gecko false",
+        "e2e": "protractor"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/common": "^2.3.1",
+        "@angular/compiler": "^2.3.1",
+        "@angular/core": "^2.3.1",
+        "@angular/forms": "^2.3.1",
+        "@angular/http": "^2.3.1",
+        "@angular/platform-browser": "^2.3.1",
+        "@angular/platform-browser-dynamic": "^2.3.1",
+        "@angular/router": "^3.3.1",
+        "core-js": "^2.4.1",
+        "rxjs": "^5.0.1",
+        "ts-helpers": "^1.1.1",
+        "zone.js": "0.7.2",
+        "webix": "4.1.0",
+        "bootstrap": "^4.0.0-alpha.4",
+        "typescript": "2.1.1",
+        "three": "0.84.0"
+    },
+    "devDependencies": {
+        "@angular/compiler-cli": "^2.4.4",
+        "@types/jasmine": "2.5.38",
+        "@types/node": "^6.0.42",
+        "@types/webix": "4.1.0",
+        "@types/three": "0.83.1",
+        "@angular/cli": "^1.0.0-rc.1",
+        "codelyzer": "~2.0.0-beta.1",
+        "jasmine-core": "2.5.2",
+        "jasmine-spec-reporter": "2.5.0",
+        "karma": "1.2.0",
+        "karma-chrome-launcher": "^2.0.0",
+        "karma-cli": "^1.0.1",
+        "karma-jasmine": "^1.0.2",
+        "karma-remap-istanbul": "^0.2.1",
+        "protractor": "~4.0.13",
+        "ts-node": "1.2.1",
+        "tslint": "^4.3.0"
+    }
 }

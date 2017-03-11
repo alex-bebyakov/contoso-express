@@ -1,4 +1,6 @@
 node_modules/
 .idea/
 .vscode/
-client/public/vendor
+server/build/
+client/dist/
+*.log

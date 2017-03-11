@@ -1,4 +1,4 @@
-# Contoso Express
+# Mean-api
 
 Full-stack JavaScript sample app. Remake of famous Microsoft Contoso University tutorial. This project provides many basic infrastructure parts, required in modern Web Application such as:
 
@@ -20,20 +20,22 @@ This project is the missing manual (sample) which shows one of the ways to build
 
 ## Get started
 
-See instructions here: [Getting Started](https://github.com/yegor-sytnyk/contoso-express/wiki/Getting-started)
+npm install -g @angular/cli
+
+npm install
+
+npm run build
+
+npm start
 
 ## Technologies
 
 * Language: TypeScript (alt JS)
-* DB: PostgreSQL (alt MongoDb)
-* Data Access: Sequelize
+* DB: MongoDb
+* Data Access: Mongoose
 * ExpressJS
 * Logging: winston
 * Auth: Passport
 * Validation: Joi
 * Build: npm scripts
-* Client render: React (alt Vue.js)
-* Client data: Redux
-* Client build: webpack
-
-**  ALT - means alternative implementation is planned. For some areas it is hard to choose the best option, so would be nice to have alternative sample.
+* Client: Ancular 2

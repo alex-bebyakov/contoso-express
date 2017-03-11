@@ -1,28 +1,19 @@
 {
-  "name": "contoso-express",
-  "version": "0.1.0",
-  "description": "Full-stack JavaScript application based on Contoso University .NET tutorial",
-  "keywords": [
-    "TypeScript",
-    "Contoso",
-    "Express",
-    "Postgres",
-    "Passport",
-    "React"
-  ],
-  "main": "index.js",
-  "scripts": {
-    "postinstall": "cd server && npm install && typings install && cd ../client && npm install",
-    "start": "cd server && npm run start",
-    "watch": "cd client && npm run start",
-    "build": "cd server && npm run build && cd ../client && npm run copy-assets && npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yegor-sytnyk/contoso-express.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {}
+    "name": "mean-api",
+    "version": "0.0.1",
+    "license": "MIT",
+    "scripts": {
+        "postinstall": "cd server && npm i && cd ../client && npm i",
+        "start": "cd server && npm run start",
+        "build": "cd server && npm run build && cd ../client && ng build",
+        "test-server": "cd server && mocha --timeout 5000 -R spec ./build/test/index.js"
+    },
+    "dependencies": {
+        "lodash": "^4.17.4",
+        "moment": "2.17.1"
+    },
+    "devDependencies": {
+
+        "@types/lodash": "4.14.45"
+    }
 }

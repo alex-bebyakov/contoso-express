@@ -1,42 +1,6 @@
 import pathHelper from './helpers/pathHelper';
 
-interface IConfigValues {
-    app: {
-        appName: string,
-        isDevLocal: boolean,
-        logErrors: boolean,
-        rootUrl: string
-    },
-    db: {
-        host: string,
-        dbName: string,
-        username: string,
-        password: string
-    },
-    web: {
-        port: number,
-        sessionSecret: string
-    },
-    email: {
-        fromNoReply: string
-    },
-    auth: {
-        useAuth: boolean,
-        google: {
-            clientID: string,
-            clientSecret: string
-        },
-        facebook: {
-            clientID: string,
-            clientSecret: string
-        }
-    },
-    format: {
-        date: string,
-        year: string,
-        currencySymbol: string
-    }
-}
+import {IConfigValues} from '../index'
 
 let configValues = <IConfigValues>{};
 
@@ -54,34 +18,27 @@ export function loadConfig() {
     configValues.app.logErrors = get('app.logErrors');
     configValues.app.rootUrl = get('app.rootUrl');
 
-    (<any>configValues).db = {};
-    configValues.db.host = get('db.host');
-    configValues.db.dbName = get('db.dbName');
-    configValues.db.username = get('db.username');
-    configValues.db.password = get('db.password');
+    (<any>configValues).email = {};
+    configValues.email.auth = get('email.auth');
+    configValues.email.host = get('email.host');
+    configValues.email.port = get('email.port');
+    configValues.email.secure = get('email.secure');
+
 
     (<any>configValues).web = {};
     configValues.web.port = get('web.port');
     configValues.web.sessionSecret = get('web.sessionSecret');
 
-    (<any>configValues).email = {};
-    configValues.email.fromNoReply = get('email.fromNoReply');
-
-    (<any>configValues).auth = {};
-    configValues.auth.useAuth = get('auth.useAuth');
-
-    (<any>configValues).auth.google = {};
-    configValues.auth.google.clientID = get('auth.google.clientID');
-    configValues.auth.google.clientSecret = get('auth.google.clientSecret');
-
-    (<any>configValues).auth.facebook = {};
-    configValues.auth.facebook.clientID = get('auth.facebook.clientID');
-    configValues.auth.facebook.clientSecret = get('auth.facebook.clientSecret');
+    (<any>configValues).db = {};
+    configValues.db.host = get('db.host');
 
     (<any>configValues).format = {};
     configValues.format.date = get('format.date');
     configValues.format.year = get('format.year');
     configValues.format.currencySymbol = get('format.currencySymbol');
+
+    (<any>configValues).resource ="";
+    configValues.resource=get('resource');
 }
 
 function get(key) {
@@ -90,7 +47,8 @@ function get(key) {
 
 function ensureConfigPath() {
     if (!process.env['NODE_CONFIG_DIR']) {
-        let configPath = pathHelper.getDataRelative('config');
+        let configPath = pathHelper.getRelative('');
+        console.log(configPath)
         process.env['NODE_CONFIG_DIR'] = configPath;
     }
 }
